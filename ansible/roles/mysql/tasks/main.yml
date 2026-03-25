@@ -1,0 +1,30 @@
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Fix broken packages
+  command: apt-get install -f -y
+
+- name: Install MySQL
+  apt:
+    name: mysql-server
+    state: present
+
+- name: Start MySQL
+  service:
+    name: mysql
+    state: started
+    enabled: yes 
+
+- name: Install Node Exporter
+  apt:
+    name: prometheus-node-exporter
+    state: present
+    update_cache: yes
+
+- name: Start Node Exporter
+  service:
+    name: prometheus-node-exporter
+    state: started
+    enabled: yes

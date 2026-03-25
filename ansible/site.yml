@@ -1,0 +1,24 @@
+- name: Configure Web Servers
+  hosts: web
+  become: yes
+  roles:
+    - web
+
+- name: Configure MySQL
+  hosts: mysql
+  become: yes
+  roles:
+    - mysql
+
+- name: Configure Redis
+  hosts: redis
+  become: yes
+  roles:
+    - redis
+
+- name: Configure Monitoring
+  hosts: monitor
+  become: yes
+  roles:
+    - monitor
+
